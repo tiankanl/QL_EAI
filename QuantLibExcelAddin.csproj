@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <AssemblyName>QuantLibExcelAddin</AssemblyName>
+    <RootNamespace>QuantLibExcelAddin</RootNamespace>
+    <PlatformTarget>x64</PlatformTarget>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- ExcelDNA requires a Win32 DLL entry point; suppress the default one -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- ExcelDNA: generates the .xll add-in during build -->
+    <PackageReference Include="ExcelDna.AddIn" Version="1.8.0" />
+    <!-- QuantLib SWIG C# wrapper -->
+    <ProjectReference Include="..\QuantLib-SWIG\CSharp\csharp\NQuantLib.csproj" />
+  </ItemGroup>
+
+  <!--
+    Copy the native QuantLib wrapper DLL (NQuantLibc.dll) into the output directory
+    so that the P/Invoke calls in NQuantLib resolve at runtime.
+  -->
+  <Target Name="CopyNativeQuantLib" BeforeTargets="Build" Condition=" '$(OS)' == 'Windows_NT' ">
+    <Copy SourceFiles="..\QuantLib-SWIG\CSharp\cpp\NQuantLibc.dll"
+          DestinationFolder="$(OutputPath)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

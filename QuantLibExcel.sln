@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34702.170
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NQuantLib", "C:\Users\TianKang\Documents\QL\QuantLib-SWIG\CSharp\csharp\NQuantLib.csproj", "{1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantLibExcelAddin", "C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\QuantLibExcelAddin.csproj", "{9F8E7D6C-5B4A-3928-1706-E5D4C3B2A190}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D}.Debug|x64.ActiveCfg = Debug|AnyCPU
+		{1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D}.Debug|x64.Build.0 = Debug|AnyCPU
+		{1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D}.Release|x64.ActiveCfg = Release|AnyCPU
+		{1A2B3C4D-5E6F-7A8B-9C0D-1E2F3A4B5C6D}.Release|x64.Build.0 = Release|AnyCPU
+		{9F8E7D6C-5B4A-3928-1706-E5D4C3B2A190}.Debug|x64.ActiveCfg = Debug|AnyCPU
+		{9F8E7D6C-5B4A-3928-1706-E5D4C3B2A190}.Debug|x64.Build.0 = Debug|AnyCPU
+		{9F8E7D6C-5B4A-3928-1706-E5D4C3B2A190}.Release|x64.ActiveCfg = Release|AnyCPU
+		{9F8E7D6C-5B4A-3928-1706-E5D4C3B2A190}.Release|x64.Build.0 = Release|AnyCPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3C8B31D-4F5E-4A23-9B12-7D6E8F9A0B1C}
+	EndGlobalSection
+EndGlobal

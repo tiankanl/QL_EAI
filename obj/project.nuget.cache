@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "jwmcr7gdHKY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\TianKang\\Documents\\QL\\QuantLibExcelAddin\\QuantLibExcelAddin.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\TianKang\\.nuget\\packages\\exceldna.addin\\1.8.0\\exceldna.addin.1.8.0.nupkg.sha512",
+    "C:\\Users\\TianKang\\.nuget\\packages\\exceldna.integration\\1.8.0\\exceldna.integration.1.8.0.nupkg.sha512"
+  ],
+  "logs": []
+}

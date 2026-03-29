@@ -1,0 +1,182 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0-windows7.0": {
+      "ExcelDna.AddIn/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "ExcelDna.Integration": "[1.8.0]"
+        },
+        "build": {
+          "build/ExcelDna.AddIn.props": {},
+          "build/ExcelDna.AddIn.targets": {}
+        }
+      },
+      "ExcelDna.Integration/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows7.0/ExcelDna.Integration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/ExcelDna.Integration.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "NQuantLib/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/NQuantLib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NQuantLib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ExcelDna.AddIn/1.8.0": {
+      "sha512": "Q+NcNeuzIkE6d21Sc0NGBpfKClKO8QU2ozR/EZ9RE+WjCxwwOUWXPRLev8+DpOCwkUjXtBIKjE7+xxHTac3PHA==",
+      "type": "package",
+      "path": "exceldna.addin/1.8.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/ExcelDna.AddIn.props",
+        "build/ExcelDna.AddIn.targets",
+        "content/ExcelDna-Template.dna",
+        "content/Properties/ExcelDna.Build.props",
+        "exceldna.addin.1.8.0.nupkg.sha512",
+        "exceldna.addin.nuspec",
+        "images/ExcelDna-nu.png",
+        "readme.txt",
+        "tools/net452/EnvDTE.dll",
+        "tools/net452/ExcelDna.AddIn.Tasks.dll",
+        "tools/net452/ExcelDna.Integration.dll",
+        "tools/net452/ExcelDna.xll",
+        "tools/net452/ExcelDna64.xll",
+        "tools/net452/Microsoft.Extensions.DependencyModel.dll",
+        "tools/net452/Newtonsoft.Json.dll",
+        "tools/net452/install.ps1",
+        "tools/net452/uninstall.ps1",
+        "tools/net6.0-windows7.0/AsmResolver.PE.File.dll",
+        "tools/net6.0-windows7.0/AsmResolver.PE.dll",
+        "tools/net6.0-windows7.0/AsmResolver.dll",
+        "tools/net6.0-windows7.0/ExcelDna.AddIn.Tasks.dll",
+        "tools/net6.0-windows7.0/ExcelDna.Integration.dll",
+        "tools/net6.0-windows7.0/ExcelDna.xll",
+        "tools/net6.0-windows7.0/ExcelDna64.xll"
+      ]
+    },
+    "ExcelDna.Integration/1.8.0": {
+      "sha512": "Z7UYuY291cTxc8lEESlUT73iI28yZ9LeJnvhPIRpZHBlrjbCN8lnEWvSmUqmUn1lBNGk6p2n0GlPuBhopJuksA==",
+      "type": "package",
+      "path": "exceldna.integration/1.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "exceldna.integration.1.8.0.nupkg.sha512",
+        "exceldna.integration.nuspec",
+        "images/ExcelDna-nu.png",
+        "lib/net452/ExcelDna.Integration.dll",
+        "lib/net452/ExcelDna.Integration.xml",
+        "lib/net6.0-windows7.0/ExcelDna.Integration.dll",
+        "lib/net6.0-windows7.0/ExcelDna.Integration.xml"
+      ]
+    },
+    "NQuantLib/1.0.0": {
+      "type": "project",
+      "path": "../QuantLib-SWIG/CSharp/csharp/NQuantLib.csproj",
+      "msbuildProject": "../QuantLib-SWIG/CSharp/csharp/NQuantLib.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0-windows7.0": [
+      "ExcelDna.AddIn >= 1.8.0",
+      "NQuantLib >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\TianKang\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\TianKang\\Documents\\QL\\QuantLibExcelAddin\\QuantLibExcelAddin.csproj",
+      "projectName": "QuantLibExcelAddin",
+      "projectPath": "C:\\Users\\TianKang\\Documents\\QL\\QuantLibExcelAddin\\QuantLibExcelAddin.csproj",
+      "packagesPath": "C:\\Users\\TianKang\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TianKang\\Documents\\QL\\QuantLibExcelAddin\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\TianKang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "projectReferences": {
+            "C:\\Users\\TianKang\\Documents\\QL\\QuantLib-SWIG\\CSharp\\csharp\\NQuantLib.csproj": {
+              "projectPath": "C:\\Users\\TianKang\\Documents\\QL\\QuantLib-SWIG\\CSharp\\csharp\\NQuantLib.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.200"
+    },
+    "frameworks": {
+      "net8.0-windows7.0": {
+        "targetAlias": "net8.0-windows",
+        "dependencies": {
+          "ExcelDna.AddIn": {
+            "target": "Package",
+            "version": "[1.8.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

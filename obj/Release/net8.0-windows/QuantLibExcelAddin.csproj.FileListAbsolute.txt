@@ -1,0 +1,15 @@
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.csproj.AssemblyReference.cache
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.AssemblyInfoInputs.cache
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.AssemblyInfo.cs
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.csproj.CoreCompileInputs.cache
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\bin\Release\net8.0-windows\QuantLibExcelAddin.deps.json
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\bin\Release\net8.0-windows\QuantLibExcelAddin.runtimeconfig.json
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\bin\Release\net8.0-windows\QuantLibExcelAddin.dll
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\bin\Release\net8.0-windows\QuantLibExcelAddin.pdb
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\bin\Release\net8.0-windows\NQuantLib.dll
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\bin\Release\net8.0-windows\NQuantLib.pdb
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLib.BCE8F6F7.Up2Date
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.dll
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.pdb
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.genruntimeconfig.cache
