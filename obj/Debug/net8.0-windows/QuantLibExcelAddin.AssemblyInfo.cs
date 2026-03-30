@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuantLibExcelAddin")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+622e8e148f22d6002e16d0b00eee81cfcc736faa")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuantLibExcelAddin")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuantLibExcelAddin")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -13,3 +13,4 @@ C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\Qua
 C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.dll
 C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.pdb
 C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.genruntimeconfig.cache
+C:\Users\TianKang\Documents\QL\QuantLibExcelAddin\obj\Release\net8.0-windows\QuantLibExcelAddin.sourcelink.json
