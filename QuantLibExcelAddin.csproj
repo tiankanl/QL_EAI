@@ -4,7 +4,7 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <AssemblyName>QuantLibExcelAddin</AssemblyName>
     <RootNamespace>QuantLibExcelAddin</RootNamespace>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <!-- ExcelDNA requires a Win32 DLL entry point; suppress the default one -->
@@ -22,8 +22,14 @@
     Copy the native QuantLib wrapper DLL (NQuantLibc.dll) into the output directory
     so that the P/Invoke calls in NQuantLib resolve at runtime.
   -->
+  <!--
+    Copy the correct bitness of NQuantLibc.dll based on PlatformTarget.
+    x64 build: uses QuantLib-SWIG\CSharp\cpp\x64\NQuantLibc.dll
+    x86 build: uses QuantLib-SWIG\CSharp\cpp\x86\NQuantLibc.dll
+    If you keep only one bitness, adjust the paths below accordingly.
+  -->
   <Target Name="CopyNativeQuantLib" BeforeTargets="Build" Condition=" '$(OS)' == 'Windows_NT' ">
-    <Copy SourceFiles="..\QuantLib-SWIG\CSharp\cpp\NQuantLibc.dll"
+    <Copy SourceFiles="..\QuantLib-SWIG\CSharp\cpp\$(PlatformTarget)\NQuantLibc.dll"
           DestinationFolder="$(OutputPath)"
           SkipUnchangedFiles="true" />
   </Target>
