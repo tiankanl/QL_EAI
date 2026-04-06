@@ -17,7 +17,8 @@ namespace QuantLibExcelAddin.Helpers
 {
     internal static class ObjectCache
     {
-        private static readonly ConcurrentDictionary<string, YieldTermStructureHandle> _curves = new();
+        private static readonly ConcurrentDictionary<string, YieldTermStructureHandle> _curves     = new();
+        private static readonly ConcurrentDictionary<string, double[]>                 _nodeDates  = new();
 
         /// <summary>Store a curve handle under <paramref name="key"/>; returns the key.</summary>
         internal static string StoreCurve(string key, YieldTermStructureHandle handle)
@@ -41,5 +42,40 @@ namespace QuantLibExcelAddin.Helpers
         }
 
         internal static bool HasCurve(string key) => _curves.ContainsKey(key);
+
+        // ─── Node-date storage ────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Store the pillar dates (as Excel serials) for the curve identified by <paramref name="key"/>.
+        /// Called by each curve builder so that QL_CurveNodes can retrieve them later.
+        /// </summary>
+        internal static void StoreNodeDates(string key, double[] excelDates)
+            => _nodeDates[key] = excelDates;
+
+        /// <summary>
+        /// Retrieve the stored pillar dates for a curve, or <c>null</c> if none were stored
+        /// (e.g. the curve was built in an older session before this feature existed).
+        /// </summary>
+        internal static double[]? GetNodeDates(string key)
+            => _nodeDates.TryGetValue(key, out var dates) ? dates : null;
+
+        // ─── Shutdown ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// Dispose every cached native handle and clear both dictionaries.
+        /// Call this from IExcelAddIn.AutoClose() so that QuantLib's C++ destructors
+        /// run eagerly on unload rather than one-by-one through GC finalizers,
+        /// which is what makes Excel slow to close when the cache is large.
+        /// </summary>
+        internal static void ClearAll()
+        {
+            foreach (var handle in _curves.Values)
+            {
+                try { handle.Dispose(); }
+                catch { /* never let a bad handle block shutdown */ }
+            }
+            _curves.Clear();
+            _nodeDates.Clear();
+        }
     }
 }

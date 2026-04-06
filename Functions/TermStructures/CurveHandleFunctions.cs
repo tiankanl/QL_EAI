@@ -90,6 +90,17 @@ namespace QuantLibExcelAddin.Functions.TermStructures
                     var curve  = new PiecewiseFlatForward(evalQL, helpers, dc);
                     var handle = new YieldTermStructureHandle(curve);
                     ObjectCache.StoreCurve(key, handle);
+
+                    // Store the swap maturity dates as node pillars for QL_CurveNodes.
+                    var nodeDates = new double[tenors.Length];
+                    for (int i = 0; i < tenors.Length; i++)
+                    {
+                        var t = new Period((int)SM.Round(tenors[i]), TimeUnit.Years);
+                        nodeDates[i] = QLHelper.ToExcelDate(
+                            calendar.advance(evalQL, t,
+                                BusinessDayConvention.ModifiedFollowing, false));
+                    }
+                    ObjectCache.StoreNodeDates(key, nodeDates);
                 }
 
                 return key;
@@ -117,6 +128,7 @@ namespace QuantLibExcelAddin.Functions.TermStructures
                     Settings.instance().setEvaluationDate(evalQL);
                     var curve  = new FlatForward(evalQL, rate, new Actual365Fixed());
                     ObjectCache.StoreCurve(key, new YieldTermStructureHandle(curve));
+                    ObjectCache.StoreNodeDates(key, new[] { evalDate });
                 }
 
                 return key;
@@ -228,11 +240,54 @@ namespace QuantLibExcelAddin.Functions.TermStructures
                                                Compounding.Continuous, Frequency.Annual);
                     curve.enableExtrapolation();
                     ObjectCache.StoreCurve(key, new YieldTermStructureHandle(curve));
+                    ObjectCache.StoreNodeDates(key, datesArr);
                 }
 
                 return key;
             }
             catch (Exception ex) { return $"#QL_ERR: {ex.Message}"; }
+        }
+
+        // ─── Curve node inspector ─────────────────────────────────────────────────
+
+        [ExcelFunction(Name = "QL_CurveNodes",
+                       Category = "QuantLib — Curve Handles",
+                       Description = "Return the pillar nodes of a stored curve as an N×3 array: " +
+                                     "[Date, Zero Rate (continuous, Act365), Discount Factor]. " +
+                                     "Nodes are the dates used to build the curve (swap maturities, " +
+                                     "input zero-rate dates, discount-factor dates, or tenor grid). " +
+                                     "Enter as an array formula.")]
+        public static object QL_CurveNodes(
+            [ExcelArgument(Description = "Curve handle (from QL_BuildSwapCurve, QL_BuildZeroCurve, etc.)")] string curveHandle)
+        {
+            try
+            {
+                var handle    = ObjectCache.GetCurve(curveHandle);
+                var nodeDates = ObjectCache.GetNodeDates(curveHandle);
+
+                if (nodeDates == null || nodeDates.Length == 0)
+                    throw new ArgumentException(
+                        "No node dates found for this handle. " +
+                        "Force-recalculate the curve builder cell (Ctrl+Alt+F9) to repopulate the cache.");
+
+                var dc     = new Actual365Fixed();
+                var result = new object[nodeDates.Length, 3];
+
+                for (int i = 0; i < nodeDates.Length; i++)
+                {
+                    var qlDate    = QLHelper.ToQLDate(nodeDates[i]);
+                    double zero   = handle.currentLink()
+                                         .zeroRate(qlDate, dc, Compounding.Continuous, Frequency.Annual)
+                                         .rate();
+                    double df     = handle.currentLink().discount(qlDate);
+                    result[i, 0]  = nodeDates[i];   // Excel serial — format cell as date
+                    result[i, 1]  = zero;
+                    result[i, 2]  = df;
+                }
+
+                return result;
+            }
+            catch (Exception ex) { return new object[,] { { $"#QL_ERR: {ex.Message}" } }; }
         }
 
         // ─── Discount-factor curve builder ────────────────────────────────────────
@@ -276,6 +331,7 @@ namespace QuantLibExcelAddin.Functions.TermStructures
                     var curve = new DiscountCurve(qlDates, qlFactors, dc, new TARGET());
                     curve.enableExtrapolation();
                     ObjectCache.StoreCurve(key, new YieldTermStructureHandle(curve));
+                    ObjectCache.StoreNodeDates(key, datesArr);
                 }
 
                 return key;

@@ -121,13 +121,14 @@ namespace QuantLibExcelAddin.Functions.TermStructures
                     var dc       = new Actual365Fixed();
                     var calendar = new TARGET();
 
-                    var qlDates = new DateVector();
-                    var qlRates = new DoubleVector();
+                    var qlDates       = new DateVector();
+                    var qlRates       = new DoubleVector();
+                    var nodeExcelDates = new double[grid.Length];
 
-                    foreach (double tenor in grid)
+                    for (int j = 0; j < grid.Length; j++)
                     {
                         // Advance by the equivalent number of months, adjusted to business days.
-                        var months   = (int)Math.Round(tenor * 12);
+                        var months   = (int)Math.Round(grid[j] * 12);
                         if (months < 1) months = 1;             // guard against sub-monthly grid entries
                         var pillarQL = calendar.advance(evalQL, months, TimeUnit.Months,
                                                         BusinessDayConvention.ModifiedFollowing);
@@ -139,7 +140,8 @@ namespace QuantLibExcelAddin.Functions.TermStructures
                                             .rate();
 
                         qlDates.Add(pillarQL);
-                        qlRates.Add(baseRate + TotalShock(tenor, centers, amplitudes, halfWidths));
+                        qlRates.Add(baseRate + TotalShock(grid[j], centers, amplitudes, halfWidths));
+                        nodeExcelDates[j] = QLHelper.ToExcelDate(pillarQL);
                     }
 
                     // Build a linearly-interpolated zero curve with flat extrapolation.
@@ -148,6 +150,7 @@ namespace QuantLibExcelAddin.Functions.TermStructures
                                                      Compounding.Continuous, Frequency.Annual);
                     shockedCurve.enableExtrapolation();
                     ObjectCache.StoreCurve(key, new YieldTermStructureHandle(shockedCurve));
+                    ObjectCache.StoreNodeDates(key, nodeExcelDates);
                 }
 
                 return key;
